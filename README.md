@@ -25,8 +25,9 @@ source docker_install.sh
 ```
 # Docker config
 
+```sh
 newgrp docker
-
+```
 
 ### Build image
 
