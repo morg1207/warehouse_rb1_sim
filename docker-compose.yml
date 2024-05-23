@@ -1,0 +1,22 @@
+services:
+
+  tortoisebot-ros2-gazebo:
+    image: warehouse_rb1_sim
+    container_name: warehouse_rb1_sim_cont
+    privileged: true
+    build: 
+      context: .
+      dockerfile: ./dockerfile
+    environment:
+      - DISPLAY
+      - GAZEBO_MASTER_URI=http://localhost:11345
+      - GAZEBO_RESOURCE_PATH=/usr/share/gazebo-11:/usr/share/gazebo-11:/usr/share/gazebo
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $HOME/.Xauthority:/root/.Xauthority:ro
+    networks:
+      - rosnet
+
+networks:
+  rosnet:
+    driver: bridge
