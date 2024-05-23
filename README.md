@@ -14,9 +14,6 @@ A Docker Compose setup for simulating the RB1 robot in Gazebo with ROS2 Humble.
 
 Run the following commands:
 
-```sh
-cd src
-```
 
 ### Install Docker
 
