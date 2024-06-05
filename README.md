@@ -42,5 +42,13 @@ source scripts/run.sh
 
 ```sh
 source scripts/stop.sh
+
+```
+
+### Reconstruir la imagen en el cache 
+
+```sh
+docker build -t warehouse_rb1_sim --build-arg CACHEBUST=$(date +%s) .
+
 ```
 
