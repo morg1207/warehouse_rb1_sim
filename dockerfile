@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y \
   ros-humble-ros2-controllers \
   && rm -rf /var/lib/apt/lists/*
 
-
+# Custom cache invalidation
+ARG CACHEBUST=1
 # Create a volume for ROS packages
 RUN git clone https://github.com/morg1207/warehouse_rb1_sim.git /sim_ros2_ws/src
 
