@@ -15,6 +15,7 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - $HOME/.Xauthority:/root/.Xauthority:ro
+      #- /home/morg/dockers/warehouse_rb1_sim/warehouse_rb1_files:/sim_ros2_ws/src/warehouse_rb1_files
     networks:
       - rosnet
 

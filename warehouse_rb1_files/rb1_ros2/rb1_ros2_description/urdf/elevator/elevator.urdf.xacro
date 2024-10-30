@@ -81,7 +81,7 @@
             <xacro:solid_cuboid_inertia1 m="2" h="0.05" d="0.05" w="0.05"/>
 		</inertial> 
 		<visual>
-			<origin xyz="0 0 0" rpy="0 0 0" />
+			<origin xyz="0 0 0" rpy="-${pi/2} 0 0" />
 			<xacro:if value="${hq}">
 				<geometry>
 					<mesh filename="package://rb1_ros2_description/meshes/elevator/rb1_elevator_platform.dae"/>
@@ -97,7 +97,7 @@
 			</material>
 		</visual>  
 		<collision>
-			<origin xyz="0 0 0" rpy="0 0 0 " />
+			<origin xyz="0 0 0" rpy="-${pi/2} 0 0 " />
 			<mass>2</mass>
 			<geometry>
 				<mesh filename="package://rb1_ros2_description/meshes/elevator/rb1_elevator_platform.dae"/>

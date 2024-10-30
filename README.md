@@ -20,22 +20,27 @@ Run the following commands:
 ```sh
 source docker_install.sh
 ```
-# Docker config
-
-```sh
-newgrp docker
-```
 
 ### Build image
 
 ```sh
-source scripts/build.sh
+xhost +local:root
+export DISPLAY
+
+# Docker build  and run
+cd 
+mkdir dockers
+cd ~/dockers
+git clone git@github.com:morg1207/warehouse_rb1_sim.git
+cd ~/dockers/warehouse_rb1_sim 
+docker compose build 
 ```
 
 ### Run the container
 
 ```sh
-source scripts/run.sh
+cd ~/dockers/warehouse_rb1_sim 
+docker compose up
 ```
 
 ### Stop the container

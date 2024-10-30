@@ -29,9 +29,7 @@ ARG CACHEBUST=1
 # Create a volume for ROS packages
 RUN git clone https://github.com/morg1207/warehouse_rb1_sim.git /sim_ros2_ws/src
 
-
-#COPY ./ros_entrypoint.sh /ros_entrypoint.sh
-
+#COPY ./warehouse_rb1_files  /sim_ros2_ws/src/warehouse_rb1_sim
 # Build the Catkin workspace
 RUN source /opt/ros/humble/setup.bash \
     && cd /sim_ros2_ws \
