@@ -31,11 +31,11 @@ cd ~/rb1_ws
 source install/setup.bash
 ros2 launch the_construct_office_gazebo warehouse_rb1_rviz.launch.xml
 ```
-output rviz
+output gazebo
 
 <img src="./images/gazebo.png" alt="rviz" width="400"/>  
 
-output gazebo
+output rviz
 
 <img src="./images/rviz.png" alt="rviz" width="400"/>  
 
@@ -98,3 +98,8 @@ docker build -t warehouse_rb1_sim --build-arg CACHEBUST=$(date +%s) .
 
 ```
 
+### Agradecimientos
+
+Este repositorio se basa en una simulación proporcionada por [The Construct](https://www.theconstruct.ai/). Agradezco su trabajo y recursos educativos, que han sido fundamentales para el desarrollo de este repositorio.
+
+<img src="./images/the_construct.png" alt="rviz" width="200"/>  
