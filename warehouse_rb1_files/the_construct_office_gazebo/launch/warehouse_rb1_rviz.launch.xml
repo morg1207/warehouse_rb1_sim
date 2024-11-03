@@ -1,0 +1,41 @@
+<?xml version='1.0' ?>
+<launch>
+
+  <!-- Argumentos para pasar por línea de comandos -->
+  <arg name="rviz_file" default="$(find-pkg-share the_construct_office_gazebo)/rviz/rviz_config.rviz"/>
+  <!-- Launches World now independently form spawning robot -->
+  <include file="$(find-pkg-share the_construct_office_gazebo)/launch/start_world_warehouse.launch.py"/>z
+
+  <!-- Spawn RB-1 -->
+  <timer period="5">
+    <include file="$(find-pkg-share rb1_ros2_description)/launch/rb1_ros2_xacro.launch.py"/>
+
+    <!-- Add topic_tools relay for cmd_vel -->
+    <node pkg="topic_tools" exec="relay" name="cmd_vel_relay">
+        <param name="input_topic" value="/cmd_vel" />
+        <param name="output_topic" value="/diffbot_base_controller/cmd_vel_unstamped" />
+    </node>
+
+    <!-- Add topic_tools relay for odom -->
+    <node pkg="topic_tools" exec="relay" name="odom_relay">
+        <param name="input_topic" value="/diffbot_base_controller/odom" />
+        <param name="output_topic" value="/odom" />
+    </node>
+    
+    <!-- Add elevator relay -->
+    <node pkg="rb1_gazebo" exec="elevator_relay.py" name="elevator_relay"/>
+
+    <!-- Add attach cart node -->
+    <node pkg="attach_cart" exec="attach_cart_node" name="attach_cart_node"/>
+  </timer>
+    <!-- Lanzamiento de RViz -->
+
+    <node
+        pkg="rviz2"
+        exec="rviz2"
+        name="rviz"
+        args="-d $(var rviz_file)"
+        output="screen" />
+
+
+</launch>
