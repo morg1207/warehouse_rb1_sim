@@ -96,13 +96,13 @@
 				<color rgba="0.0 0.0 0.0 1"/>
 			</material>
 		</visual>  
-		<collision>
+		<!--collision>
 			<origin xyz="0 0 0" rpy="-${pi/2} 0 0 " />
 			<mass>2</mass>
 			<geometry>
 				<mesh filename="package://rb1_ros2_description/meshes/elevator/rb1_elevator_platform.dae"/>
 			</geometry>
-		</collision>
+		</collision-->
 		
 	</link>
 
