@@ -15,6 +15,7 @@ def launch_setup(context, *args, **kwargs):
 
     x_spawn = LaunchConfiguration('x_spawn').perform(context)
     y_spawn = LaunchConfiguration('y_spawn').perform(context)
+    z_spawn = LaunchConfiguration('z_spawn').perform(context)
     yaw_spawn = LaunchConfiguration('yaw_spawn').perform(context)
     # entity_name = LaunchConfiguration('entity_name').perform(context)
 
@@ -67,7 +68,7 @@ def launch_setup(context, *args, **kwargs):
         #            ]
         arguments=['-entity',
                    'rb1',
-                   '-x', x_spawn, '-y', y_spawn, '-Y', yaw_spawn,
+                   '-x', x_spawn, '-y', y_spawn, '-z', z_spawn, '-Y', yaw_spawn,
                    '-topic', 'robot_description',
                    '-timeout', '120.0'
                    ]
@@ -81,6 +82,7 @@ def generate_launch_description():
 
     x_spawn_arg = DeclareLaunchArgument('x_spawn', default_value='1.0')
     y_spawn_arg = DeclareLaunchArgument('y_spawn', default_value='2.0')
+    z_spawn_arg = DeclareLaunchArgument('z_spawn', default_value='1.0')
     yaw_spawn_arg = DeclareLaunchArgument('yaw_spawn', default_value='0.0')
     entity_name_arg = DeclareLaunchArgument(
         'entity_name', default_value='rb1')
@@ -88,6 +90,7 @@ def generate_launch_description():
     return LaunchDescription([
         x_spawn_arg,
         y_spawn_arg,
+        z_spawn_arg,
         yaw_spawn_arg,
         entity_name_arg,
         OpaqueFunction(function=launch_setup)
