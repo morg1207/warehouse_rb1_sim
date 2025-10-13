@@ -1,24 +1,17 @@
-version: "3.7"
 services:
-
   tortoisebot-ros2-gazebo:
     image: warehouse_rb1_sim
     container_name: warehouse_rb1_sim_cont
     privileged: true
-    build: 
-      context: .
-      dockerfile: ./dockerfile
     environment:
-      - DISPLAY
+      - DISPLAY=:0
+      - LIBGL_ALWAYS_SOFTWARE=1
+      - QT_X11_NO_MITSHM=1
       - GAZEBO_MASTER_URI=http://localhost:11345
-      - GAZEBO_RESOURCE_PATH=/usr/share/gazebo-11:/usr/share/gazebo-11:/usr/share/gazebo
+      - GAZEBO_MODEL_DATABASE_URI=http://models.gazebosim.org
+      - OGRE_RTT_MODE=Copy
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - $HOME/.Xauthority:/root/.Xauthority:ro
-      #- /home/morg/dockers/warehouse_rb1_sim/warehouse_rb1_files:/sim_ros2_ws/src/warehouse_rb1_files
-    networks:
-      - rosnet
-
-networks:
-  rosnet:
-    driver: bridge
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /mnt/wslg:/mnt/wslg:rw
+      - /usr/lib/wsl:/usr/lib/wsl:ro
+    network_mode: host
